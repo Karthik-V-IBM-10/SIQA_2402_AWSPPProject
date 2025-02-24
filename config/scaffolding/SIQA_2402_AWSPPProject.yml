@@ -11,89 +11,91 @@ packages:
   wpmServer: https://packages.webmethods.io
   wpmRegistry: licensed
 - name: TPP_services_in_FCS
+  version: "1.0"
   gitServerName: SIQA_KVV_IBM
   gitUrl: https://github.com/Karthik-V-IBM-10
   gitUsername: Karthik-V-IBM-10
   gitBranch: main
 - name: SSL_JDBC_Test
+  version: "1.0"
   gitServerName: prabhakarsag
   gitUrl: https://github.com/prabhakarsag
   gitUsername: prabhakarsag
   gitBranch: main
 - name: JMS2waySSL
+  version: "1.0"
   gitServerName: prabhakarsag
   gitUrl: https://github.com/prabhakarsag
   gitUsername: prabhakarsag
   gitBranch: main
 - name: JMSTest
+  version: "1.0"
   gitServerName: prabhakarsag
   gitUrl: https://github.com/prabhakarsag
   gitUsername: prabhakarsag
   gitBranch: main
 - name: SIQAJDBCAdapterTests
+  version: "1.0"
   gitServerName: SIQAGitHub
   gitUrl: https://github.com/manoj-jannu-IBM
   gitUsername: manoj-jannu-IBM
   gitBranch: main
 services:
-- serviceName: project.siqa_2402_awspp.integrations:SIQAAdapterFlow
+- serviceName: project.siqa_2402_awspp.integrations:tppfs
   packages:
   - name: SIQA_2402_AWSPPProject
     version: "1.0"
-- serviceName: project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.operations.actions:test
-  packages:
-  - name: SIQA_2402_AWSPPProject
+  - name: TPP_services_in_FCS
     version: "1.0"
+  - name: JMS2waySSL
+    version: "1.0"
+  - name: SSL_JDBC_Test
+    version: "1.0"
+  - name: JMSTest
+    version: "1.0"
+  - name: SIQAJDBCAdapterTests
+    version: "1.0"
+  - name: WmJDBCAdapter
+    version: 10.3.0.0.34
+    wpmServer: https://packages.webmethods.io
+    wpmRegistry: licensed
+- serviceName: services:add3Ints
+  packages:
+  - name: TPP_services_in_FCS
+    version: "1.0"
+- serviceName: pub.math:addInts
+  packages:
+  - name: WmPublic
+    version: 11.1.0.0.1
 configurationVariables:
-  jdbc.jdbcTestPool.waitingThread: "0"
-  jdbc.jdbcTestPool.minConns: "0"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionEnabled
   : "false"
-  jdbc.jdbcTestPool.expireTime: "60000"
   jdbc.jdbcTestPool.snoopparms: ddtdbg.ProtocolTraceEnable=true;ddtdbg.ProtocolTraceMaxline=16;ddtdbg.ProtocolTraceLocation=logs/snoop/jdbcTestPool.log;ddtdbg.ProtocolTraceShowTime=true
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.otherProperties
   : loginTimeout=60;driverType=thin;
   jdbc.jdbcTestPool.maxConns: "10"
   jdbc.jdbcTestPool.userid: root
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.password
-  : "{AES}B2Xqma4Ost5nVUiXctJydQ=="
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.serverName
   : vmiboint01
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.dbType
-  : MSSQL
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.blockingTimeout
   : "1000"
-  jdbc.jdbcTestPool.driverAlias: MySQL Database Java Connector Driver
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.poolIncrementSize
   : "1"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.expireTimeout
   : "1000"
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.transactionType
-  : NO_TRANSACTION
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.databaseName
-  : SIQACloud
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.poolable
   : "false"
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.portNumber
-  : "1433"
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.networkProtocol
-  : tcp
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.databaseName
+  : SIQACloud
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.transactionType
+  : NO_TRANSACTION
   jdbc.jdbcTestPool.spyenabled: "false"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.trustStore
   : ""
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.minimumPoolSize
-  : "1"
   jdbc.jdbcTestPool.snoopenabled: "false"
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.datasourceClass
-  : com.wm.dd.jdbcx.sqlserver.SQLServerDataSource
-  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.startupBackoffSecs
-  : "10"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.keyStore
   : ""
-  jdbc.jdbcTestPool.password: "{AES}er+I3U8nDVm8F4DBRST1+A=="
   jdbc.jdbcTestPool.spyparms: SpyAttributes=(log=(file)logs/spy/jdbcTestPool.log;logTName=yes;timestamp=yes)
-  jdbc.jdbcTestPool.dbURL: jdbc:mysql://mysql.test.local:3306/webm
-  jdbc.jdbcTestPool.poolThreshold: "0"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.user
   : sa
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.startupRetryCount
@@ -102,6 +104,27 @@ configurationVariables:
   : "0"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.maximumPoolSize
   : "10"
+  jdbc.jdbcTestPool.waitingThread: "0"
+  jdbc.jdbcTestPool.minConns: "0"
+  jdbc.jdbcTestPool.expireTime: "60000"
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.password
+  : "{AES}B2Xqma4Ost5nVUiXctJydQ=="
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.dbType
+  : MSSQL
+  jdbc.jdbcTestPool.driverAlias: MySQL Database Java Connector Driver
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.portNumber
+  : "1433"
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.networkProtocol
+  : tcp
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.minimumPoolSize
+  : "1"
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.datasourceClass
+  : com.wm.dd.jdbcx.sqlserver.SQLServerDataSource
+  ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionManagerSettings.startupBackoffSecs
+  : "10"
+  jdbc.jdbcTestPool.password: "{AES}er+I3U8nDVm8F4DBRST1+A=="
+  jdbc.jdbcTestPool.dbURL: jdbc:mysql://mysql.test.local:3306/webm
+  jdbc.jdbcTestPool.poolThreshold: "0"
   ? artConnection.SIQA_2402_AWSPPProject.project.siqa_2402_awspp.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_1.connectionSettings.driverType
   : Progress® DataDirect®
   jdbc.jdbcTestPool.useSSL: "false"
